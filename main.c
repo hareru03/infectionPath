@@ -1,9 +1,10 @@
-//
-//  main.c
-//  infestPath
-//
-//  Created by Juyeop Kim on 2022/10/20.
-//
+// extern 사용 금지  & 표준 입출력은 여기에서만  & 더 이상의 include 불가  
+
+// 입출력을 통해 환자 정보 구조체 생성 및 linked list 저장 코드 구현 : ifct_database.h 활용  
+// 특정 조건에 맞는 환자의 정보 출력 코드 구현 -> 01, 02, 03 
+// 환자의 전파자를 추적하고 최초 전파자를 알아내는 코드 구현  -> 04 
+
+// 역할 : 프로그램의 주요 동작 프름 실현  
 
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +12,7 @@
 #include "ifct_database.h"
 
 #define MENU_PATIENT        1
-#define MENU_PLACE          2
+#define MENU_PLACE          2 
 #define MENU_AGE            3
 #define MENU_TRACK          4
 #define MENU_EXIT           0
@@ -48,9 +49,9 @@ int main(int argc, const char * argv[]) {
     
     //2022 10_문자열 입출력 실습  
     
-    fp=fopen("patientInfo_sample.txt","r"); // 파일 오픈  
+    fp=fopen("patientInfo_sample.txt","r"); // 1, 파일 읽기  
 
-    // 환자 정보 전체 저장
+    // 2, 환자 정보 전체 저장
 
     while((fscanf(fp,"%d" "%d" "%d",&pIndex, &age, &time)) == 3) { // 입력받은 값이 3개가 존재하는지를 확인 + 3개의 변수에 값 저장  
     	
@@ -63,12 +64,18 @@ int main(int argc, const char * argv[]) {
     		printf("%s   ",ifctele_getPlaceName(placeHist[i])); // 숫자(이동경로)를 나라로 반환  
 		}
 		
+		/*ifct_element=ifctele_genElement(index,age, ...);
+		ifctdb_addtail(ifct_element); 
+		
+		ifctele_genElement(ifct_element); // 이거랑 바로 아래는 진짜 프로젝트 실현할 때는 지워야 함  
+		age=ifctele_genAge(ifct_element); */
+		
     	printf("\n");
 	}
     
 
     //1-3. FILE pointer close
-    fclose(fp);
+    fclose(fp);  
     
     do {
         printf("\n=============== INFECTION PATH MANAGEMENT PROGRAM (No. of patients : %i) =============\n", ifctdb_len());
@@ -89,19 +96,19 @@ int main(int argc, const char * argv[]) {
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
-            case MENU_PATIENT:
+            case MENU_PATIENT: // 특정 환자 정보 출력 
                 
                 break;
                 
-            case MENU_PLACE:
+            case MENU_PLACE: // 특정 장소에서 감염이 확인된 환자 정보 출력  
                 
                 break;
                 
-            case MENU_AGE:
+            case MENU_AGE: // 특정 나이에 해당하는 환자 정보 출력  
                 
                 break;
                 
-            case MENU_TRACK:
+            case MENU_TRACK: // 감염경로 및 최초 전파자 추척  
                     
                 break;
                 

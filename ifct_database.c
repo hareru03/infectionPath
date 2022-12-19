@@ -4,6 +4,8 @@
 //  Database platform code for storing infest path elements
 //  Created by Juyeop Kim on 2022/10/20.
 //
+// 역할 : 감염자 정보들을 모아서 관리하고 linked list 형태의 자료 구조로 저장 
+// linked luist는 여기에서만 접근가능하며, 다른 파일에선 프로토타이핑을 통해서만 접근 가능  
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,13 +14,13 @@
 
 #define LIST_END -1
 
-//node definition for linked list
+//node definition for linked list (linked list 선언) 
 typedef struct node{
-    int index;      //index of the node
-    void* obj;      //object data
-    void* next;         //pointer to the next
-    void* prev;         //pointer to the next
-} node_t;
+    int index;      //index of the node (linked list의 각 자료의 index)
+    void* obj;      //object data 
+    void* next;     //pointer to the next
+    void* prev;     //pointer to the next
+} node_t; 
 
 
 static node_t* list_database = NULL;
@@ -99,6 +101,7 @@ static int updateIndex(void)
                 3. make the last node's next pointer to point the new node
                 4. update the index
 */
+
 int ifctdb_addTail(void* obj)
 {
     node_t* ndPtr;
