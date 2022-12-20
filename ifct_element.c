@@ -109,12 +109,12 @@ char* ifctele_getPlaceName(int placeIndex) {
 }
 
 //with 교수님 : 구조체 틀  
-/*typedf struct ifs_ele{
+typedef struct ifs_ele{
 
 	int index; //number
 	int age; //age
-	int infested_time; //time
-	place_t place[N_HISROTY];//place[N_HISTORY]
+	int time; //time
+	place_t place[N_HISTORY]; //place[N_HISTORY]
 
 }ifs_ele_t; 
 
@@ -123,36 +123,52 @@ char* ifctele_getPlaceName(int placeIndex) {
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]) {
 	
 	ifs_ele_t* ptr;
-	malloc(); 
-	ptr=malloc();
 	
-	ptr->index=index; 
-	ptr->age=age;
-	// ...
+	int i;
+
+	ptr= (int*)malloc(100*sizeof(int));
+	
+	ptr->index = index; 
+	ptr->age = age;
+	ptr->time = detected_time;
+	
+	for(i=0;i<N_HISTORY;i++) {
+		
+		ptr->place[i] = history_place[N_HISTORY];
+	}
 	
 	// 여기에는 free(ptr);를 넣으면 안 됨 : 언젠가는 free를 사용해야 한다는 말일 뿐 여기서는 사용하면 X  
 	return ptr;
 	
 }
 
-int ifctele_getAge(void* obj) { // 환자의 일부정보만 알고 싶을 때 ex) 나이.. 
+// 환자의 나이를 출력  
+int ifctele_getAge(void* obj) { 
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
-	return ptr->age*;// 나이를 알고 싶기 떄문 
+	return ptr->age;
 	
 }
 // ifctele_getHistPlaceIndex랑  ifctele_getinfestedTime도 return ptr->()* 이런 식으로 작성  
 
-int ifctele_getHistPlaceIndex(void* obj, int index) {
+// 환자의 이동경로 출력 -> 여기선 일단 이것만 오류  
+/*int ifctele_getHistPlaceIndex(void* obj, int index) {
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
-	return ptr->place_t place[N_HISROTY]*; // 이거는 비슷하지만 어떻게 다른 방식으로 해야 한다고 했는데..;; 
-}
+	
+	int i;
+	for(i=0;i<N_HISTORY;i++) {
+		
+		ptr->place[i] = history_place[N_HISTORY] ;
+	}
+	
+	return ptr;
+} */
 
 unsigned int ifctele_getinfestedTime(void* obj) {
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
-	return ptr->infested_time*; // 이것도 내가 작성한건데 맞는 지 모름  
+	return ptr->time;
 }
 
 void ifctele_printElement(void* obj) {
@@ -161,4 +177,3 @@ void ifctele_printElement(void* obj) {
 	printf("age : %i\n",ptr->age); // 아직 안 끝남  
 	
 }
-*/

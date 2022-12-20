@@ -43,17 +43,17 @@ int main(int argc, const char * argv[]) {
     {
         printf("[ERROR] Failed to open database file!! (%s)\n", argv[1]);
         return -1;
-    }*/
+    } */
     
     //1-2. loading each patient informations
     
     //2022 10_문자열 입출력 실습  
     
-    fp=fopen("patientInfo_sample.txt","r"); // 1, 파일 읽기  
+    fp=fopen("patientInfo_sample.txt","r"); // 파일 읽기  
 
     // 2, 환자 정보 전체 저장
 
-    while((fscanf(fp,"%d" "%d" "%d",&pIndex, &age, &time)) == 3) { // 입력받은 값이 3개가 존재하는지를 확인 + 3개의 변수에 값 저장  
+   /* while((fscanf(fp,"%d" "%d" "%d",&pIndex, &age, &time)) == 3) { // 입력받은 값이 3개가 존재하는지를 확인 + 3개의 변수에 값 저장  
     	
     	int i;
     
@@ -64,14 +64,14 @@ int main(int argc, const char * argv[]) {
     		printf("%s   ",ifctele_getPlaceName(placeHist[i])); // 숫자(이동경로)를 나라로 반환  
 		}
 		
-		/*ifct_element=ifctele_genElement(index,age, ...);
+		ifct_element=ifctele_genElement(index,age, ...);
 		ifctdb_addtail(ifct_element); 
 		
 		ifctele_genElement(ifct_element); // 이거랑 바로 아래는 진짜 프로젝트 실현할 때는 지워야 함  
-		age=ifctele_genAge(ifct_element); */
+		age=ifctele_genAge(ifct_element);
 		
     	printf("\n");
-	}
+	} */
     
 
     //1-3. FILE pointer close
@@ -96,8 +96,8 @@ int main(int argc, const char * argv[]) {
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
-            case MENU_PATIENT: // 특정 환자 정보 출력 
-                
+            case MENU_PATIENT: // 사용자 번호 입력 -> 환자 정보 출력 (전부) 
+            	
                 break;
                 
             case MENU_PLACE: // 특정 장소에서 감염이 확인된 환자 정보 출력  
