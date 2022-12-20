@@ -108,7 +108,7 @@ char* ifctele_getPlaceName(int placeIndex) {
 	return countryName[placeIndex];
 }
 
-//with 교수님 : 구조체 틀  
+// 환자 정보를 담는 구조체 형식  
 typedef struct ifs_ele{
 
 	int index; //number
@@ -118,15 +118,14 @@ typedef struct ifs_ele{
 
 }ifs_ele_t; 
 
-
-
+// 구조체 실체  
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]) {
 	
 	ifs_ele_t* ptr;
 	
 	int i;
 
-	ptr= (int*)malloc(100*sizeof(int));
+	ptr = (int*)malloc(100*sizeof(int)); 
 	
 	ptr->index = index; 
 	ptr->age = age;
@@ -134,7 +133,7 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 	
 	for(i=0;i<N_HISTORY;i++) {
 		
-		ptr->place[i] = history_place[N_HISTORY];
+		ptr->place[i]= history_place[N_HISTORY];
 	}
 	
 	// 여기에는 free(ptr);를 넣으면 안 됨 : 언젠가는 free를 사용해야 한다는 말일 뿐 여기서는 사용하면 X  
@@ -142,16 +141,15 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 	
 }
 
-// 환자의 나이를 출력  
+// 환자 나이 
 int ifctele_getAge(void* obj) { 
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
 	return ptr->age;
 	
-}
-// ifctele_getHistPlaceIndex랑  ifctele_getinfestedTime도 return ptr->()* 이런 식으로 작성  
+} 
 
-// 환자의 이동경로 출력 -> 여기선 일단 이것만 오류  
+// 환자 경로
 /*int ifctele_getHistPlaceIndex(void* obj, int index) {
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
@@ -159,21 +157,28 @@ int ifctele_getAge(void* obj) {
 	int i;
 	for(i=0;i<N_HISTORY;i++) {
 		
-		ptr->place[i] = history_place[N_HISTORY] ;
+		ptr->place[i] ;
 	}
 	
 	return ptr;
-} */
+}*/
 
+// 환자 감염날짜  
 unsigned int ifctele_getinfestedTime(void* obj) {
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
 	return ptr->time;
 }
 
+// 환자 정보 출력   
 void ifctele_printElement(void* obj) {
 	
-	ifs_ele_t* ptr=(ifs_ele_t*)obj;
-	printf("age : %i\n",ptr->age); // 아직 안 끝남  
+	int i;
 	
+	ifs_ele_t* ptr=(ifs_ele_t*)obj;
+	printf("number : %i\n",ptr->index); 
+	printf("age : %i\n",ptr->age);
+	printf("infected time : %i\n",ptr->time);
+	printf("history place : %i %i %i %i %i\n",ptr->place[0],ptr->place[1],ptr->place[2],ptr->place[3],ptr->place[4]);
 }
+

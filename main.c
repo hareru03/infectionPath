@@ -27,8 +27,12 @@ int main(int argc, const char * argv[]) {
     int menu_selection;
     void *ifct_element;
     FILE* fp;
-    int pIndex, age, time;
-    int placeHist[N_HISTORY]; // N_History의 의미  
+    int index, age, detected_time;
+    int history_place[N_HISTORY]; 
+    void *obj;
+    int num;
+    int place_char;
+    int min_age, max_age;
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -50,6 +54,7 @@ int main(int argc, const char * argv[]) {
     //2022 10_문자열 입출력 실습  
     
     fp=fopen("patientInfo_sample.txt","r"); // 파일 읽기  
+    //ifctele_genElement(index, age, detected_time, history_place[N_HISTORY]); -> 이거 있으면 실행 X 
 
     // 2, 환자 정보 전체 저장
 
@@ -96,17 +101,39 @@ int main(int argc, const char * argv[]) {
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
-            case MENU_PATIENT: // 사용자 번호 입력 -> 환자 정보 출력 (전부) 
+            case MENU_PATIENT: {
             	
+            	printf("번호 입력 : ");
+            	scanf("%i",&num);
+            	obj=&num;
+				ifctele_printElement(obj); } 
+				 
+				break;
+                
+            /*case MENU_PLACE: { // 특정 장소에서 감염이 확인된 환자 정보 출력  
+            	printf("장소 입력 : ");
+            	scanf("%d",&place_char); 
+            	// ...
+
+			}
+                
                 break;
                 
-            case MENU_PLACE: // 특정 장소에서 감염이 확인된 환자 정보 출력  
+            case MENU_AGE: { // 특정 나이에 해당하는 환자 정보 출력  
+            	printf("최소 나이 입력 : ");
+            	scanf("%i",&min_age);
+            	printf("최대 나이 입력 : ");
+            	scanf("%i",&max_age);
+            	
+            	for(i=0;i<N_HISTORY;i++) { // 해당 범위에 해당하는 나이를 가진 환자의 정보만 출력  
+            		
+            		if((age>min_age) && (age<max_age))
+            			ifctele_printElement(obj);
+				}
+
+			}
                 
-                break;
-                
-            case MENU_AGE: // 특정 나이에 해당하는 환자 정보 출력  
-                
-                break;
+                break; */
                 
             case MENU_TRACK: // 감염경로 및 최초 전파자 추척  
                     
