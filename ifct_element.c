@@ -136,7 +136,6 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 		ptr->place[i]= history_place[N_HISTORY];
 	}
 	
-	// 여기에는 free(ptr);를 넣으면 안 됨 : 언젠가는 free를 사용해야 한다는 말일 뿐 여기서는 사용하면 X  
 	return ptr;
 	
 }
