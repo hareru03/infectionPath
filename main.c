@@ -21,7 +21,8 @@ int main(int argc, const char * argv[]) {
     FILE* fp;
     int index, age, detected_time;
     int history_place[N_HISTORY];
-    int num;
+    //int num;
+    int input_num;
     int place_char;
     int min_age, max_age;
     
@@ -54,8 +55,8 @@ int main(int argc, const char * argv[]) {
 			//history_place[i] = ifctele_getPlaceName(history_place[i]); // 숫자(이동경로)를 나라로 반환  
 		}
 		
-		ifct_element=ifctele_genElement(index,age,detected_time,history_place);
-		ifctdb_addTail(ifct_element); 
+		ifct_element=ifctele_genElement(index,age,detected_time,history_place); // 구조체 생성  
+		ifctdb_addTail(ifct_element); // 구조체 저장  
 
 		
 		//ifctele_genElement(ifct_element); // 이거랑 바로 아래는 진짜 프로젝트 실현할 때는 지워야 함  
@@ -85,23 +86,27 @@ int main(int argc, const char * argv[]) {
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
-            case MENU_PATIENT: { // 사용자가 번호를 선택하도록 하는 거, history_place 값이 안 나오는 거 고쳐야 함  
+            case MENU_PATIENT: {
+            	//printf("번호 입력 : ");
+            	//scanf("%d",input_num);
+            	
+            	//ifctele_printElement(ifctdb_getData(input_num)); }
             	
 				ifctele_printElement(ifct_element); } 
 				 
 				break;
                 
-            /*case MENU_PLACE: { // 특정 장소에서 감염이 확인된 환자 정보 출력  
-            	printf("장소 입력 : ");
+            case MENU_PLACE: //{ 
+            	/*printf("장소 입력 : ");
             	scanf("%d",&place_char); 
             	// ...
 
-			}
+			} */
                 
                 break;
                 
-            case MENU_AGE: { // 특정 나이에 해당하는 환자 정보 출력  
-            	printf("최소 나이 입력 : ");
+            case MENU_AGE: //{ 
+            	/*printf("최소 나이 입력 : ");
             	scanf("%i",&min_age);
             	printf("최대 나이 입력 : ");
             	scanf("%i",&max_age);
@@ -109,12 +114,12 @@ int main(int argc, const char * argv[]) {
             	for(i=0;i<N_HISTORY;i++) { // 해당 범위에 해당하는 나이를 가진 환자의 정보만 출력  
             		
             		if((age>min_age) && (age<max_age))
-            			ifctele_printElement(obj);
+            			ifctele_printElement;
 				}
 
-			}
+			} */
                 
-                break; */
+                break;
                 
             case MENU_TRACK: // 감염경로 및 최초 전파자 추척  
                     
