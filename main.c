@@ -50,16 +50,10 @@ int main(int argc, const char * argv[]) {
     	
     	for(i=0;i<5;i++) {   
     		fscanf(fp,"%d",&history_place[i]); 
-			//printf("%s   ",ifctele_getPlaceName(history_place[i]));
-			//history_place[i] = ifctele_getPlaceName(history_place[i]); // 숫자(이동경로)를 나라로 반환  
 		}
 		
 		ifct_element=ifctele_genElement(index,age,detected_time,history_place); // 구조체 생성  
 		ifctdb_addTail(ifct_element); // 구조체 저장  
-
-		
-		//ifctele_genElement(ifct_element); // 이거랑 바로 아래는 진짜 프로젝트 실현할 때는 지워야 함  
-		//age=ifctele_genAge(ifct_element);
 
 	}
 	
@@ -88,10 +82,21 @@ int main(int argc, const char * argv[]) {
             case MENU_PATIENT: {
             	printf("번호 입력 : ");
             	scanf("%d",input_num);
-
-            	//ifctele_printElement(ifctdb_getData(input_num));} // 여기에서 값도 안 나오고 프로그램이 끝나버림  
-            	
-				ifctele_printElement(ifct_element); } 
+				
+				int i;
+				
+				for(i=0;i<N_HISTORY;i++) {
+					
+					ifct_element=ifctdb_getData(i);
+					
+					if(input_num==ifct_element) {
+						
+						ifctele_printElement(ifct_element);
+					}
+					else
+						break;
+				}}
+				
 				 
 				break;
                 

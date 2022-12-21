@@ -148,7 +148,7 @@ int ifctele_getHistPlaceIndex(void* obj, int index) {
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
 	
-	for(index=0;index<N_HISTORY;index++) {
+	for(index=3;index<9;index++) {
 		
 		ptr->place[index] ;
 	}
@@ -165,21 +165,21 @@ unsigned int ifctele_getinfestedTime(void* obj) {
 
 // 환자 정보 출력   
 void ifctele_printElement(void* obj) {
-	
+		
 	int i;
 	
 	ifs_ele_t* ptr=(ifs_ele_t*)obj;
 	printf("number : %i\n",ptr->index); 
 	printf("age : %i\n",ptr->age);
 	printf("infected time : %i\n",ptr->time);
-	printf("history place : ");
 	
 	int history_place;
 	
 	for(i=0;i<N_HISTORY;i++) {
 		
-		(ptr->place[i])= history_place;
-		printf("%s",ifsele_getPlaceName(history_place));
+		ptr->place[i]= history_place;
+		printf("place history : %s",ifctele_getPlaceName(history_place));
 	}
+	printf("\n");
 	
 }
