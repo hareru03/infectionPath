@@ -1,9 +1,3 @@
-// 입출력을 통해 환자 정보 구조체 생성 및 linked list 저장 코드 구현 : ifct_database.h 활용  
-// 특정 조건에 맞는 환자의 정보 출력 코드 구현 -> 01, 02, 03 
-// 환자의 전파자를 추적하고 최초 전파자를 알아내는 코드 구현  -> 04 
-
-// 역할 : 프로그램의 주요 동작 프름 실현  
-
 #include <stdio.h>
 #include <string.h>
 #include "ifct_element.h"
@@ -26,8 +20,7 @@ int main(int argc, const char * argv[]) {
     void *ifct_element;
     FILE* fp;
     int index, age, detected_time;
-    int history_place[N_HISTORY]; 
-    void *obj;
+    int history_place[N_HISTORY];
     int num;
     int place_char;
     int min_age, max_age;
@@ -51,28 +44,27 @@ int main(int argc, const char * argv[]) {
     
     fp=fopen("patientInfo_sample.txt","r"); // 파일 읽기  
 
-    // 2, 환자 정보 전체 저장
-
-   /* while((fscanf(fp,"%d" "%d" "%d",&pIndex, &age, &time)) == 3) { // 입력받은 값이 3개가 존재하는지를 확인 + 3개의 변수에 값 저장  
-    	
+   while((fscanf(fp,"%d" "%d" "%d",&index, &age, &detected_time)) == 3) { 
+   
     	int i;
-    
-    	printf("%d번째 환자 감염 경로 : ",pIndex);
     	
     	for(i=0;i<5;i++) {   
-    		fscanf(fp,"%d",&placeHist[i]); // placeHist[]에 3-7번째 숫자(이동경로) 대입 : fscanf의 경우, 앞에서 사용했으면 그 뒤의 값부터 저장함  
-    		printf("%s   ",ifctele_getPlaceName(placeHist[i])); // 숫자(이동경로)를 나라로 반환  
+    		fscanf(fp,"%d",&history_place[i]); 
+			//printf("%s   ",ifctele_getPlaceName(history_place[i]));
+			//history_place[i] = ifctele_getPlaceName(history_place[i]); // 숫자(이동경로)를 나라로 반환  
 		}
 		
-		ifct_element=ifctele_genElement(index,age, ...);
-		ifctdb_addtail(ifct_element); 
-		
-    	printf("\n");
-	} */
-    
+		ifct_element=ifctele_genElement(index,age,detected_time,history_place);
+		ifctdb_addTail(ifct_element); 
 
+		
+		//ifctele_genElement(ifct_element); // 이거랑 바로 아래는 진짜 프로젝트 실현할 때는 지워야 함  
+		//age=ifctele_genAge(ifct_element);
+
+	}
+	
     //1-3. FILE pointer close
-    fclose(fp);  
+    fclose(fp);   
     
     do {
         printf("\n=============== INFECTION PATH MANAGEMENT PROGRAM (No. of patients : %i) =============\n", ifctdb_len());
@@ -93,12 +85,9 @@ int main(int argc, const char * argv[]) {
                 printf("Exiting the program... Bye bye.\n");
                 break;
                 
-            case MENU_PATIENT: { // 환자 정보 출력  
+            case MENU_PATIENT: { // 사용자가 번호를 선택하도록 하는 거, history_place 값이 안 나오는 거 고쳐야 함  
             	
-            	printf("번호 입력 : ");
-            	scanf("%i",&num);
-            	obj=&num;
-				ifctele_printElement(obj); } 
+				ifctele_printElement(ifct_element); } 
 				 
 				break;
                 

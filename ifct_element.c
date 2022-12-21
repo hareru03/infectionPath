@@ -1,9 +1,3 @@
-// 환자 정보 구조체 생성 및 구조체 내부 변수를 접근할 수 있는 함수 구현
-// 환자 정보를 출력하는 함수 구현 
-// 역할 : 감염자 정보 구조체를 다루며, 구조체 instance 생성과 내용 분석 역할 
-
-// 구조체 ifct_ele_t의 정의가 이뤄지며 여기서만 사용  
-
 //  ifs_element.c
 //  InfestPath
 //
@@ -135,7 +129,7 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 		
 		ptr->place[i]= history_place[N_HISTORY];
 	}
-	
+	 
 	return ptr;
 	
 }
