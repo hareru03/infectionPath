@@ -84,13 +84,13 @@ int main(int argc, const char * argv[]) {
             	scanf("%d",input_num);
 				
 				int i;
-				
+
 				for(i=0;i<N_HISTORY;i++) {
 					
 					ifct_element=ifctdb_getData(i);
 					
 					if(input_num==ifct_element) {
-						
+
 						ifctele_printElement(ifct_element);
 					}
 					else
