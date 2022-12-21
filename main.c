@@ -21,10 +21,9 @@ int main(int argc, const char * argv[]) {
     FILE* fp;
     int index, age, detected_time;
     int history_place[N_HISTORY];
-    //int num;
     int input_num;
-    int place_char;
-    int min_age, max_age;
+    //int place_char;
+    //int min_age, max_age;
     
     //------------- 1. loading patient info file ------------------------------
     //1-1. FILE pointer open
@@ -87,10 +86,10 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT: {
-            	//printf("번호 입력 : ");
-            	//scanf("%d",input_num);
-            	
-            	//ifctele_printElement(ifctdb_getData(input_num)); }
+            	printf("번호 입력 : ");
+            	scanf("%d",input_num);
+
+            	//ifctele_printElement(ifctdb_getData(input_num));} // 여기에서 값도 안 나오고 프로그램이 끝나버림  
             	
 				ifctele_printElement(ifct_element); } 
 				 
@@ -99,7 +98,8 @@ int main(int argc, const char * argv[]) {
             case MENU_PLACE: //{ 
             	/*printf("장소 입력 : ");
             	scanf("%d",&place_char); 
-            	// ...
+            	
+            	사용자가 입력한 장소에서 감염이 확인된 환자 정보 출력  
 
 			} */
                 
@@ -111,10 +111,10 @@ int main(int argc, const char * argv[]) {
             	printf("최대 나이 입력 : ");
             	scanf("%i",&max_age);
             	
-            	for(i=0;i<N_HISTORY;i++) { // 해당 범위에 해당하는 나이를 가진 환자의 정보만 출력  
+            	for(i=0;i<N_HISTORY;i++) {   
             		
             		if((age>min_age) && (age<max_age))
-            			ifctele_printElement;
+						해당 범위에 해당하는 나이를 가진 환자 정보 출력  
 				}
 
 			} */

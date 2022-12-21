@@ -4,8 +4,6 @@
 //  Database platform code for storing infest path elements
 //  Created by Juyeop Kim on 2022/10/20.
 //
-// 역할 : 감염자 정보들을 모아서 관리하고 linked list 형태의 자료 구조로 저장 
-// linked luist는 여기에서만 접근가능하며, 다른 파일에선 프로토타이핑을 통해서만 접근 가능  
 
 #include <stdio.h>
 #include <stdlib.h>

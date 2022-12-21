@@ -1,3 +1,4 @@
+//
 //  ifs_element.c
 //  InfestPath
 //
@@ -171,5 +172,14 @@ void ifctele_printElement(void* obj) {
 	printf("number : %i\n",ptr->index); 
 	printf("age : %i\n",ptr->age);
 	printf("infected time : %i\n",ptr->time);
-	printf("history place : %i %i %i %i %i\n",ptr->place[0],ptr->place[1],ptr->place[2],ptr->place[3],ptr->place[4]);
+	printf("history place : ");
+	
+	int history_place;
+	
+	for(i=0;i<N_HISTORY;i++) {
+		
+		(ptr->place[i])= history_place;
+		printf("%s",ifsele_getPlaceName(history_place));
+	}
+	
 }
